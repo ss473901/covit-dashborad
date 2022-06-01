@@ -1,9 +1,27 @@
-
+# 環境構築
 ```
-npx create-react-app my-app --template typescript
+npx create-react-app covit-dashborad --template typescript
+```
+```
+npm install axios
+```
+```
+npm i @material-ui/core --legacy-peer-deps
+```
+```
+npm install chart.js@2.9.3
+```
+```
+npm install react-chartjs-2@2.9.0 --legacy-peer-deps
+```
+```
+npm install react-countup
+```
+```
+npm install react-icons
 ```
 
-
+# 使用技術
 - "@material-ui/core": "^4.12.4",
 - "@reduxjs/toolkit": "^1.8.2",
 - "@testing-library/jest-dom": "^5.16.4",
