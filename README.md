@@ -1,3 +1,9 @@
+
+```
+npx create-react-app my-app --template typescript
+```
+
+
 - "@material-ui/core": "^4.12.4",
 - "@reduxjs/toolkit": "^1.8.2",
 - "@testing-library/jest-dom": "^5.16.4",
