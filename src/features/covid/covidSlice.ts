@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { isDoStatement } from "typescript";
 import { RootState } from "../../app/store";
 import dataJson from "./data.json";
 import dataJsonDaily from "./dataDaily.json";
@@ -85,8 +86,40 @@ export const fetchAsyncGet = createAsyncThunk("covid/get", async () => {
   return data;
 });
 
+export const fetchAsyncGetDaily = createAsyncThunk(
+  "covid/getDaily",
+  async () => {
+    const { data } = await axios.get<APIDATADAILY>(apiUrl);
+    return data;
+  }
+);
+
+export const fetchAsyncGetCountry = createAsyncThunk(
+  "covid/getCountry",
+  async (country: string) => {
+    let dynamicUrl = apiUrl;
+    if (country) {
+      dynamicUrl = `${apiUrl}/countries/${country}`;
+    }
+    const { data } = await axios.get<APIDATA>(dynamicUrl);
+    return { data: data, country: country };
+  }
+);
+
 const covidSlice = createSlice({
   name: "covid",
   initialState: initialState,
   reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchAsyncGet.fulfilled, (state, action) => {
+      return {
+        ...state,
+        data: action.payload,
+      };
+    });
+
+
+
+    
+  },
 });
