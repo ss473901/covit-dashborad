@@ -112,14 +112,30 @@ const covidSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchAsyncGet.fulfilled, (state, action) => {
+      //fulfiledは処理が正常終了した時に帰ってくるstate
       return {
         ...state,
         data: action.payload,
       };
     });
-
-
-
-    
+    builder.addCase(fetchAsyncGetDaily.fulfilled, (state, action) => {
+      return {
+        ...state,
+        dailyData: action.payload,
+      };
+    });
+    builder.addCase(fetchAsyncGetCountry.fulfilled, (state, action) => {
+      return {
+        ...state,
+        data: action.payload.data,
+        country: action.payload.country,
+      };
+    });
   },
 });
+
+export const selectData = (state: RootState) => state.covid.data;
+export const selectDailyData = (state: RootState) => state.covid.dailyData;
+export const selectCountry = (state: RootState) => state.covid.country;
+
+export default covidSlice.reducer;
