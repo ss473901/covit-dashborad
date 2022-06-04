@@ -1,17 +1,14 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core";
 import { NativeSelect, FormControl } from "@material-ui/core";
-
 import { useAppDispatch } from "../../../app/hooks";
 import { fetchAsyncGetCountry } from "../covidSlice";
-
 const useStyles = makeStyles((theme) => ({
   formControl: {
     marginBottom: theme.spacing(3),
     minWidth: 320,
   },
 }));
-
 const SwitchCountry: React.FC = () => {
   const classes = useStyles();
   const dispatch = useAppDispatch();
@@ -33,7 +30,6 @@ const SwitchCountry: React.FC = () => {
     "sweden",
     "india",
   ];
-
   return (
     <FormControl className={classes.formControl}>
       <NativeSelect
@@ -51,5 +47,4 @@ const SwitchCountry: React.FC = () => {
     </FormControl>
   );
 };
-
 export default SwitchCountry;

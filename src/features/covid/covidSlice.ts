@@ -6,10 +6,8 @@ import dataJson from "./data.json";
 import dataJsonDaily from "./dataDaily.json";
 
 const apiUrl = "https://covid19.mathdro.id/api";
-
 type APIDATA = typeof dataJson;
 type APIDATADAILY = typeof dataJsonDaily;
-
 type covidState = {
   data: APIDATA;
   country: string;
@@ -112,7 +110,7 @@ const covidSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchAsyncGet.fulfilled, (state, action) => {
-      //fulfiledは処理が正常終了した時に帰ってくるstate
+      //fulfilledは処理が正常終了した時に帰ってくるstate
       return {
         ...state,
         data: action.payload,
